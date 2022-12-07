@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->tinyInteger('role_as')->default('0')->comment('0=assistant,1=admin,2=superadmin');
-            $table->unsignedBigInteger('district_id');
-            $table->unsignedBigInteger('state_id');
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
-            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+            $table->unsignedBigInteger('office_id')->nullable();
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
         });
     }
 
